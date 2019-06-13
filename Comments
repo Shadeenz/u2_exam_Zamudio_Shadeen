@@ -1,0 +1,21 @@
+Formulas 
+w=Velocity/radius
+RPM= w/(0.10472)
+
+Calculate of the torque of the motors 
+1oz-in=0.007061Nm
+84oz-in= 0.5931 Max torque
+
+Max velocity 
+500 RPM
+In radians per seconds = 52.35 
+
+Measured step = Max range - Min range / 2^bits -1
+solving for bits = 10 bits
+
+angle (aperture)
+30°= 0.523 radians
+
+
+Teacher you should press the flor in order to use the keyboard control and it is not turning for the max torque if you want to see it turning you should change the max torque.
+
