@@ -20,7 +20,7 @@
 /*
  * You may want to add macros here.
  */
-#define TIME_STEP 64
+#define TIME_STEP 1000
 
 /*
  * This is the main program.
@@ -100,8 +100,8 @@ int main(int argc, char **argv)
     if (pressed_key == WB_KEYBOARD_UP){
      vl_value=-40; /*w=Vr*/
      vr_value=-40; /*w=Vr*/
-     rpml_value=vl_value/0.104771; /*RPM= v/(radio(0.10472))*/
-     rpmr_value=vr_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     rpml_value=vl_value/0.104771; /*RPM= v/((0.10472))*/
+     rpmr_value=vr_value/0.104771; /*RPM= v/((0.10472))*/
      linearv_l= 0.007853*rpml_value;
      linearv_r= 0.007853*rpmr_value;   
      wb_motor_set_velocity(wheel_right, -40);
@@ -114,8 +114,8 @@ int main(int argc, char **argv)
     if (pressed_key==WB_KEYBOARD_DOWN){
      vl_value=0.13; /*w=Vr*/
      vr_value=0.13; /*w=Vr*/
-     rpml_value=vl_value/0.104771; /*RPM= v/(radio(0.10472))*/
-     rpmr_value=vr_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     rpml_value=vl_value/0.104771; /*RPM= v/((0.10472))*/
+     rpmr_value=vr_value/0.104771; /*RPM= v/((0.10472))*/
      linearv_l= 0.007853*rpml_value;
      linearv_r= 0.007853*rpmr_value;   
      wb_motor_set_velocity(wheel_right, 0.13);
@@ -128,27 +128,27 @@ int main(int argc, char **argv)
     if (pressed_key==WB_KEYBOARD_RIGHT){
      vl_value= 40; /*w=Vr*/
      vr_value=-40; /*w=Vr*/
-     rpml_value=vl_value/0.104771; /*RPM= v/(radio(0.10472))*/
-     rpmr_value=vr_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     rpml_value=vl_value/0.104771; /*RPM= v/(0.10472))*/
+     rpmr_value=vr_value/0.104771; /*RPM= v/((0.10472))*/
      linearv_l= 0.007853*rpml_value;
      linearv_r= 0.007853*rpmr_value;   
      wb_motor_set_velocity(wheel_left,   40);
      wb_motor_set_velocity(wheel_right, -40);
-     printf("Velocity right wheel   %lf rad/s\n", linearv_r);
-     printf("Velocity left wheel  %lf rad/s\n", linearv_l );
+     printf("Velocity right wheel   %lf m/s\n", linearv_r);
+     printf("Velocity left wheel  %lf m/s\n", linearv_l );
      printf("RPM left wheel  %lf \n", rpml_value );
      printf("RPM right wheel  %lf \n", rpmr_value );
      }
     if (pressed_key==WB_KEYBOARD_LEFT){
      vl_value= 40; /*w=Vr*/
      vr_value=-40; /*w=Vr*/
-     rpml_value=vl_value/0.104771; /*RPM= v/(radio(0.10472))*/
-     rpmr_value=vr_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     rpml_value=vl_value/0.104771; /*RPM= v/(0.10472))*/
+     rpmr_value=vr_value/0.104771; /*RPM= v/((0.10472))*/
      linearv_l= 0.007853*rpml_value;
      linearv_r= 0.007853*rpmr_value;    
      wb_motor_set_velocity(wheel_left,  -40);
-     printf("Velocity right wheel   %lf rad/s\n", linearv_r);
-     printf("Velocity left wheel  %lf rad/s\n", linearv_l );
+     printf("Velocity right wheel   %lf m/s\n", linearv_r);
+     printf("Velocity left wheel  %lf m/s\n", linearv_l );
      printf("RPM left wheel  %lf \n", rpml_value );
      printf("RPM right wheel  %lf \n", rpmr_value );
      }

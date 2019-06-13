@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.5779521105411721 0.7898424185329204 0.20523233616336317 0.8142916899525948
-  position 2.319364915199812 1.3879885646781174 2.187195250819425
+  orientation -0.27855520647681514 0.9585951639102929 0.05918030645795473 0.27147800966865454
+  position 1.7111243224907766 0.597619605911016 3.3487665979662293
 }
 TexturedBackground {
 }
@@ -115,6 +115,7 @@ Robot {
     }
     DistanceSensor {
       translation 0.125 0 0
+      rotation 0 0 1 0
       children [
         Shape {
           appearance PBRAppearance {
@@ -140,4 +141,17 @@ Robot {
     mass 3
   }
   controller "u2_exam_Zamudio_Shadeen"
+}
+Solid {
+  translation 1.9300000000000015 0.24000000000000005 0.16
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.9882352941176471 0.9137254901960784 0.30980392156862746
+      }
+      geometry Box {
+        size 0.2 0.5 0.3
+      }
+    }
+  ]
 }
