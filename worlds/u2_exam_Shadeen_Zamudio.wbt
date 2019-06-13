@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.6931032800836722 0.6931032800836722 0.1980295085953349 0.75
-  position 1.2 1.6 2.3
+  orientation -0.5779521105411721 0.7898424185329204 0.20523233616336317 0.8142916899525948
+  position 2.319364915199812 1.3879885646781174 2.187195250819425
 }
 TexturedBackground {
 }
@@ -52,7 +52,7 @@ Robot {
         RotationalMotor {
           name "motor_right"
           maxVelocity 52.3598
-          maxTorque 1.15
+          maxTorque 0.5931
         }
       ]
       endPoint DEF WHEEL1 Solid {
@@ -88,7 +88,7 @@ Robot {
         RotationalMotor {
           name "motor_left"
           maxVelocity 52.3598
-          maxTorque 1.15
+          maxTorque 0.5931
         }
       ]
       endPoint Solid {
@@ -129,8 +129,9 @@ Robot {
       lookupTable [
         0 0 0
         0.02 0 0
-        4 1023 0
+        5 1023 0
       ]
+      aperture 0.5235
       resolution 1
     }
   ]

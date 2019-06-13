@@ -52,6 +52,8 @@ int main(int argc, char **argv)
    double vr_value;
    double rpml_value;
    double rpmr_value;
+   double linearv_l;
+   double linearv_r;
 
    /*distance sensor devices*/
    WbDeviceTag dist_sensor=wb_robot_get_device("distance_sensor");
@@ -83,8 +85,8 @@ int main(int argc, char **argv)
 
     /*Read encoder1*/
     ps_value = wb_position_sensor_get_value(encoder);
-    printf("encoder = %lf\n", ps_value);
-    double rpm_value;
+    /*printf("encoder = %lf\n", ps_value);
+    double rpm_value;*/
 
     /* Process sensor data here */
 
@@ -96,50 +98,57 @@ int main(int argc, char **argv)
     /*Keyboard conditions*/
 
     if (pressed_key == WB_KEYBOARD_UP){
-     vl_value=-3; /*1rad/s=1m/s*/
-     vr_value=-3; /*1rad/s=1m/s*/
-     rpml_value=-60.8234; /*RPM= v/(radio(0.10472))*/
-     rpmr_value=-60.8234; /*RPM= v/(radio(0.10472))*/
-     wb_motor_set_velocity(wheel_right, -3);
-     wb_motor_set_velocity(wheel_left,  -3);
-     printf("Velocity right wheel  %lf m/s\n", vr_value );
-     printf("Velocity left wheel  %lf m/s\n", vl_value );
+     vl_value=-40; /*w=Vr*/
+     vr_value=-40; /*w=Vr*/
+     rpml_value=vl_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     rpmr_value=vr_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     linearv_l= 0.007853*rpml_value;
+     linearv_r= 0.007853*rpmr_value;   
+     wb_motor_set_velocity(wheel_right, -40);
+     wb_motor_set_velocity(wheel_left,  -40);
+     printf("Velocity right wheel   %lf m/s\n", linearv_r);
+     printf("Velocity left wheel  %lf m/s\n", linearv_l );
      printf("RPM left wheel  %lf \n", rpml_value );
      printf("RPM right wheel  %lf \n", rpmr_value );
      }
     if (pressed_key==WB_KEYBOARD_DOWN){
-     wb_motor_set_velocity(wheel_right, 0.1);
-     wb_motor_set_velocity(wheel_left,  0.1);
-     vl_value=0.1; /*1rad/s=1m/s*/
-     vr_value=0.1; /*1rad/s=1m/s*/
-     rpml_value=2.0274; /*RPM= v/(radio(0.10472))*/
-     rpmr_value=2.0274; /*RPM= v/(radio(0.10472))*/
-     printf("Velocity right wheel   %lf m/s\n", vr_value );
-     printf("Velocity left wheel  %lf m/s\n", vl_value );
+     vl_value=0.13; /*w=Vr*/
+     vr_value=0.13; /*w=Vr*/
+     rpml_value=vl_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     rpmr_value=vr_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     linearv_l= 0.007853*rpml_value;
+     linearv_r= 0.007853*rpmr_value;   
+     wb_motor_set_velocity(wheel_right, 0.13);
+     wb_motor_set_velocity(wheel_left,  0.13);
+     printf("Velocity right wheel   %lf m/s\n", linearv_r);
+     printf("Velocity left wheel  %lf m/s\n", linearv_l );
      printf("RPM left wheel  %lf \n", rpml_value );
      printf("RPM right wheel  %lf \n", rpmr_value );
      }
     if (pressed_key==WB_KEYBOARD_RIGHT){
-     wb_motor_set_velocity(wheel_left,   5);
-     wb_motor_set_velocity(wheel_right, -5);
-     vl_value=5; /*1rad/s=1m/s*/
-     vr_value=-5; /*1rad/s=1m/s*/
-     rpml_value=101.3723; /*RPM= v/(radio(0.10472))*/
-     rpmr_value=-101.3723; /*RPM= v/(radio(0.10472))*/
-     printf("Velocity right wheel   %lf m/s\n", vr_value );
-     printf("Velocity left wheel  %lf m/s\n", vl_value );
+     vl_value= 40; /*w=Vr*/
+     vr_value=-40; /*w=Vr*/
+     rpml_value=vl_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     rpmr_value=vr_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     linearv_l= 0.007853*rpml_value;
+     linearv_r= 0.007853*rpmr_value;   
+     wb_motor_set_velocity(wheel_left,   40);
+     wb_motor_set_velocity(wheel_right, -40);
+     printf("Velocity right wheel   %lf rad/s\n", linearv_r);
+     printf("Velocity left wheel  %lf rad/s\n", linearv_l );
      printf("RPM left wheel  %lf \n", rpml_value );
      printf("RPM right wheel  %lf \n", rpmr_value );
      }
     if (pressed_key==WB_KEYBOARD_LEFT){
-     wb_motor_set_velocity(wheel_left,  -5);
-     wb_motor_set_velocity(wheel_right,  5);
-     vl_value=-5; /*1rad/s=1m/s*/
-     vr_value=5; /*1rad/s=1m/s*/
-     rpml_value=-101.3723; /*RPM= v/(radio(0.10472))*/
-     rpmr_value=+101.3723; /*RPM= v/(radio(0.10472))*/
-     printf("Velocity right wheel   %lf m/s\n", vr_value );
-     printf("Velocity left wheel  %lf m/s\n", vl_value );
+     vl_value= 40; /*w=Vr*/
+     vr_value=-40; /*w=Vr*/
+     rpml_value=vl_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     rpmr_value=vr_value/0.104771; /*RPM= v/(radio(0.10472))*/
+     linearv_l= 0.007853*rpml_value;
+     linearv_r= 0.007853*rpmr_value;    
+     wb_motor_set_velocity(wheel_left,  -40);
+     printf("Velocity right wheel   %lf rad/s\n", linearv_r);
+     printf("Velocity left wheel  %lf rad/s\n", linearv_l );
      printf("RPM left wheel  %lf \n", rpml_value );
      printf("RPM right wheel  %lf \n", rpmr_value );
      }
